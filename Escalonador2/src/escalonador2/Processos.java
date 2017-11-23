@@ -73,8 +73,8 @@ public class Processos {
         for (int i = 1; i < nProcessos; i++)
         {
             tCorrido[i] = tCorrido[i-1] + tDuracao[i];
-            tAt[i] = tCorrido[i]  - tChegada[i]+1;
-            tEspera[i] = tAt[i] - tDuracao[i]+1; 
+            tAt[i] = tCorrido[i]  - tChegada[i];
+            tEspera[i] = tAt[i] - tDuracao[i]; 
         }
         
         for (int i = 0; i < nProcessos; i++)
@@ -82,10 +82,11 @@ public class Processos {
             atEspera = atEspera + tEspera[i];
             aAt = aAt + tAt[i];
         }
-        
         for(int i = 0; i < nProcessos; i++)
         {
-            System.out.println("\t TChegada: " + tChegada[i] + "\t TDuracao" + tDuracao[i] + "\t TCorrido" + tCorrido[i] + "\t TAt" + tAt[i] + "\t TEspera" + tEspera[i]);
+            System.out.println("\tTempo de Chegada: " + tChegada[i] + "\tTempo de Duracao: " + tDuracao[i] + "\tTempo Corrido: " + tCorrido[i] + "\tTurnArround: " + tAt[i] + "\tTempo de Espera: " + tEspera[i]);
         }
+        
+        System.out.println("Tempo médio de espera: " + atEspera/nProcessos + "Tempo médio de TurnArround: " + aAt/nProcessos);
     }  
 }
